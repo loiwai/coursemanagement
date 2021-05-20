@@ -1,0 +1,117 @@
+﻿@model IEnumerable<mscs.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Courses</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-action="create" asp-controller="Courses" class="btn btn-info form-control text-white">
+            Add Course
+        </a>
+    </div>
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Desccription)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.LecturerId)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desccription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LecturerId)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CourseNo">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.CourseNo">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.CourseNo">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/Courses.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desccription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LecturerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desccription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LecturerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CourseNo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CourseNo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseNo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+    -->

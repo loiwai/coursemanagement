@@ -1,0 +1,53 @@
+﻿@model IEnumerable<mscs.Models.TutorialPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lecturer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lecturer.LecturerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TutorialId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TutorialId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TutorialId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
